@@ -13,6 +13,8 @@ function updateTemperature(response) {
   let time = document.querySelector("#time");
   let date = new date(response.data.time * 1000);
   time.innerHTML = formatDate(date);
+  let iconElement = document.querySelector("#icon");
+  iconElement.innerHTML = `<img src="${response.data.condition.icon_url}" class= "weather-application-emoji">`;
 }
 
 function formatDate(date) {

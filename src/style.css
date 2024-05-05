@@ -34,8 +34,8 @@ main {
   display: flex;
 }
 .weather-application-emoji {
-  font-size: 44px;
-  margin-top: 35px;
+  height: 88px;
+  width: 88px;
 }
 .weather-application-temperature {
   font-size: 88px;
