@@ -4,6 +4,34 @@ function updateTemperature(response) {
   newTemperature.innerHTML = Math.round(Temperature);
   let newCity = document.querySelector("#city");
   newCity.innerHTML = response.data.city;
+  let description = document.querySelector("#description");
+  description.innerHTML = response.data.condition.description;
+  let humidity = document.querySelector("#humidity");
+  humidity.innerHTML = `${response.data.temperature.humidity}%`;
+  let wind = document.querySelector("#wind");
+  wind.innerHTML = `${response.data.wind.speed}km/h`;
+  let time = document.querySelector("#time");
+  let date = new date(response.data.time * 1000);
+  time.innerHTML = formatDate(date);
+}
+
+function formatDate(date) {
+  let minutes = date.getMinutes();
+  if (minutes < 10) {
+    minutes = `0$(minutes)`;
+  }
+  let hours = date.getHours();
+  let days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  let day = days[date.getDay()];
+  return `${day} ${hours}:${minutes}`;
 }
 function searchNewCity(city) {
   let apiKey = "5c06e77634650c4ffafabcbabbo73tc3";
@@ -18,4 +46,3 @@ function submitCity(event) {
 }
 let searchFormElement = document.querySelector("#search-form");
 searchFormElement.addEventListener("submit", submitCity);
-searchNewCity("Lisbon");
